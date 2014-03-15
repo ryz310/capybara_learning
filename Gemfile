@@ -32,14 +32,20 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
+group :development do
+  gem "spring"
+  gem "spring-commands-rspec"
+end
 
-# Use unicorn as the app server
-# gem 'unicorn'
+group :development, :test do
+  gem "rspec-rails"
+  gem "factory_girl_rails"
+end
 
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+group :test do
+  gem "faker"
+  gem "capybara"
+  gem "database_cleaner"
+  gem "launchy"
+  gem "selenium-webdriver"
+end
