@@ -9,11 +9,17 @@ describe Contact do
     expect(build(:contact, firstname: nil)).to have(1).errors_on(:firstname)
   end
 
-  it 'is invalid without a lastname'
-  it 'is invalid without an email address'
+  it 'is invalid without a lastname' do
+    expect(build(:contact, lastname: nil)).to have(1).errors_on(:lastname)
+  end
+
+  it 'is invalid without an email address' do
+    expect(build(:contact, email: nil)).to have(1).errors_on(:email)
+  end
+
   it 'is invalid with a duplicate email address' do
     create(:contact, email: 'example@test.com')
-    contact = create(:contact, email: 'example@test.com')
+    contact = build(:contact, email: 'example@test.com')
     expect(contact).to have(1).errors_on(:email)
   end
 
